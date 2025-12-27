@@ -1,0 +1,16 @@
+// Root build file (Kotlin 1.9.x locked so GitHub builds are stable)
+
+plugins {
+    id 'com.android.application' version '8.3.2' apply false
+    id 'com.android.library' version '8.3.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
+}
+
+
+// Force consistent JVM target (Java 17) for Kotlin and Java compilation
+subprojects {
+    tasks.withType(JavaCompile).configureEach {
+        sourceCompatibility = JavaVersion.VERSION_17.toString()
+        targetCompatibility = JavaVersion.VERSION_17.toString()
+    }
+}
